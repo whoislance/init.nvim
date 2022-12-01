@@ -1,4 +1,4 @@
-m-Plug ============== "{{{
+" ============= Vim-Plug ============== "{{{
 
 
 " auto-install vim-plug
@@ -39,7 +39,6 @@ Plug 'machakann/vim-sandwich'                           " make sandwiches
 Plug 'christoomey/vim-tmux-navigator'                   " seamless vim and tmux navigation
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'memgraph/cypher.vim'
-Plug 'nvim-tree/nvim-tree.lua'
 Plug 'tveskag/nvim-blame-line'
 call plug#end()
 
@@ -435,8 +434,6 @@ xmap <leader>a <Plug>(coc-codeaction-selected)
 nmap <leader>gd :Gdiffsplit<CR>
 nmap <leader>gb :Git blame<CR>
 
-" git blame line
-nnoremap <silent> <space>git :ToggleBlameLine<CR>
 
 " tmux navigator
 nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
