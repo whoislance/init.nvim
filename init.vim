@@ -1,4 +1,5 @@
-" ============= Vim-Plug ============== "{{{
+m-Plug ============== "{{{
+
 
 " auto-install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -38,6 +39,8 @@ Plug 'machakann/vim-sandwich'                           " make sandwiches
 Plug 'christoomey/vim-tmux-navigator'                   " seamless vim and tmux navigation
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'memgraph/cypher.vim'
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'tveskag/nvim-blame-line'
 call plug#end()
 
 "}}}
@@ -218,7 +221,7 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 
-let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
+let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.9, 'height': 0.9,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
 let g:fzf_tags_command = 'ctags -R'
 
 let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
@@ -382,6 +385,7 @@ nmap <leader>t :BTags<CR>
 nmap <leader>/ :Rg<CR>
 nmap <leader>gc :Commits<CR>
 nmap <leader>gs :GFiles?<CR>
+nmap <leader>gf :GFiles<CR>
 nmap <leader>sh :History/<CR>
 
 " show mapping on all modes with F1
@@ -431,11 +435,27 @@ xmap <leader>a <Plug>(coc-codeaction-selected)
 nmap <leader>gd :Gdiffsplit<CR>
 nmap <leader>gb :Git blame<CR>
 
+" git blame line
+nnoremap <silent> <space>git :ToggleBlameLine<CR>
+
 " tmux navigator
 nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+
+" --- customer setting ---
+
+" show file tree
+nmap <space>t :CocCommand explorer<CR>
+" show git info of each line
+nnoremap <silent> <space>git :ToggleBlameLine<CR>.
+" search file
+nmap <space><space> :Files<CR>.
+" search in current file
+nmap <space>f :BLines<CR>
+" search in whole project
+nmap <space>gf :Rg<CR>
 
 "}}}
 
