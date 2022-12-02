@@ -21,6 +21,10 @@ Plug 'gregsexton/MatchTag'                              " highlight matching htm
 Plug 'Jorengarenar/vim-MvVis'                           " move visual selection
 "}}}
 
+" ================= Functionalities ================= "{{{
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}         " LSP and more
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fzf itself
 Plug 'junegunn/fzf.vim'                                 " fuzzy search integration
 Plug 'honza/vim-snippets'                               " actual snippets
 Plug 'Yggdroot/indentLine'                              " show indentation lines
