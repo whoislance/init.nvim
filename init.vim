@@ -21,10 +21,6 @@ Plug 'gregsexton/MatchTag'                              " highlight matching htm
 Plug 'Jorengarenar/vim-MvVis'                           " move visual selection
 "}}}
 
-" ================= Functionalities ================= "{{{
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}         " LSP and more
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fzf itself
 Plug 'junegunn/fzf.vim'                                 " fuzzy search integration
 Plug 'honza/vim-snippets'                               " actual snippets
 Plug 'Yggdroot/indentLine'                              " show indentation lines
@@ -40,6 +36,8 @@ Plug 'christoomey/vim-tmux-navigator'                   " seamless vim and tmux 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'memgraph/cypher.vim'
 Plug 'tveskag/nvim-blame-line'
+Plug 'ggandor/leap.nvim'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 "}}}
@@ -443,6 +441,7 @@ nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 
 " --- customer setting ---
 
+nmap <space>q :bd<CR>
 " show file tree
 nmap <space>t :CocCommand explorer<CR>
 " show git info of each line
@@ -453,7 +452,27 @@ nmap <space><space> :Files<CR>.
 nmap <space>f :BLines<CR>
 " search in whole project
 nmap <space>gf :Rg<CR>
+" airline
+nmap <space>1 <Plug>AirlineSelectTab1
+nmap <space>2 <Plug>AirlineSelectTab2
+nmap <space>3 <Plug>AirlineSelectTab3
+nmap <space>4 <Plug>AirlineSelectTab4
+nmap <space>5 <Plug>AirlineSelectTab5
+nmap <space>6 <Plug>AirlineSelectTab6
+nmap <space>7 <Plug>AirlineSelectTab7
+nmap <space>8 <Plug>AirlineSelectTab8
+nmap <space>9 <Plug>AirlineSelectTab9
+nmap <space>0 <Plug>AirlineSelectTab0
+nmap <space>h <Plug>AirlineSelectPrevTab
+nmap <space>l <Plug>AirlineSelectNextTab
+lua require('leap').add_default_mappings()
 
+" let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 "}}}
 
 
