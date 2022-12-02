@@ -51,6 +51,7 @@ call plug#end()
 set termguicolors                                       " Opaque Background
 set mouse=a                                             " enable mouse scrolling
 set clipboard+=unnamedplus                              " use system clipboard by default
+set clipboard=unnamed,unnamedplus
 set tabstop=4 softtabstop=4 shiftwidth=4 autoindent     " tab width
 set expandtab smarttab                                  " tab key actions
 set incsearch ignorecase smartcase hlsearch             " highlight text while searching
@@ -64,6 +65,7 @@ set title                                               " tab title as file name
 set noshowmode                                          " dont show current mode below statusline
 set noshowcmd                                           " to get rid of display of last command
 set conceallevel=2                                      " set this so we wont break indentation plugin
+set splitright                                          " open vertical split to the right
 set splitright                                          " open vertical split to the right
 set splitbelow                                          " open horizontal split to the bottom
 set tw=90                                               " auto wrap lines that are longer than that
@@ -349,8 +351,8 @@ map <Enter> o<ESC>
 map <S-Enter> O<ESC>
 
 " use a different register for delete and paste
-nnoremap d "_d
-vnoremap d "_d
+" nnoremap d "_d
+" vnoremap d "_d
 vnoremap p "_dP
 nnoremap x "_x
 
@@ -381,7 +383,6 @@ au FileType markdown nmap <leader>m :MarkdownPreview<CR>
 "" FZF
 nnoremap <silent> <leader>f :Files<CR>
 nmap <leader>b :Buffers<CR>
-nmap <leader>c :Commands<CR>
 nmap <leader>t :BTags<CR>
 nmap <leader>/ :Rg<CR>
 nmap <leader>gc :Commits<CR>
@@ -444,6 +445,7 @@ nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 
 " --- customer setting ---
+nnoremap ! :!
 
 nmap <space>q :bd<CR>
 " show file tree
