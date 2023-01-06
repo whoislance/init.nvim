@@ -52,7 +52,7 @@ set termguicolors                                       " Opaque Background
 set mouse=a                                             " enable mouse scrolling
 set clipboard+=unnamedplus                              " use system clipboard by default
 set clipboard=unnamed,unnamedplus
-set tabstop=4 softtabstop=4 shiftwidth=4 autoindent     " tab width
+set tabstop=2 softtabstop=2 shiftwidth=2 autoindent     " tab width
 set expandtab smarttab                                  " tab key actions
 set incsearch ignorecase smartcase hlsearch             " highlight text while searching
 set list listchars=trail:»,tab:»-                       " use tab to navigate in list mode
@@ -221,7 +221,7 @@ let g:semshi#error_sign	= v:false                       " let ms python lsp hand
 "" FZF
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
+  \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.9, 'height': 0.9,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
@@ -351,8 +351,14 @@ map <Enter> o<ESC>
 map <S-Enter> O<ESC>
 
 " use a different register for delete and paste
-" nnoremap d "_d
-" vnoremap d "_d
+nnoremap x "_x
+nnoremap d "_d
+nnoremap D "_D
+vnoremap d "_d
+
+nnoremap <leader>d ""d
+nnoremap <leader>D ""D
+vnoremap <leader>d ""d
 vnoremap p "_dP
 nnoremap x "_x
 
@@ -398,12 +404,12 @@ vmap <F1> <plug>(fzf-maps-x)
 "" coc
 
 " use tab to navigate snippet placeholders
-inoremap <silent><expr> <TAB>
-    \ coc#pum#visible() ? coc#_select_confirm() :
-    \ coc#expandableOrJumpable() ?
-    \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-    \ check_back_space() ? "\<TAB>" :
-    \ coc#refresh()
+" inoremap <silent><expr> <TAB>
+"     \ coc#pum#visible() ? coc#_select_confirm() :
+"     \ coc#expandableOrJumpable() ?
+"     \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"     \ check_back_space() ? "\<TAB>" :
+"     \ coc#refresh()
 
 let g:coc_snippet_next = '<tab>'
 
@@ -451,9 +457,9 @@ nmap <space>q :bd<CR>
 " show file tree
 nmap <space>t :CocCommand explorer<CR>
 " show git info of each line
-nnoremap <silent> <space>git :ToggleBlameLine<CR>.
+nnoremap <silent> <space>gi :ToggleBlameLine<CR>
 " search file
-nmap <space><space> :Files<CR>.
+nmap <space><space> :Files<CR>
 " search in current file
 nmap <space>f :BLines<CR>
 " search in whole project
@@ -472,6 +478,8 @@ nmap <space>0 <Plug>AirlineSelectTab0
 nmap <space>h <Plug>AirlineSelectPrevTab
 nmap <space>l <Plug>AirlineSelectNextTab
 lua require('leap').add_default_mappings()
+" Comment
+nmap <space>/ gcc
 
 " let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#enabled = 1
