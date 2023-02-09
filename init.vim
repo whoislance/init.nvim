@@ -42,6 +42,7 @@ Plug 'memgraph/cypher.vim'
 Plug 'tveskag/nvim-blame-line'
 Plug 'ggandor/leap.nvim'
 Plug 'vim-airline/vim-airline'
+Plug 'numToStr/Comment.nvim'
 call plug#end()
 
 "}}}
@@ -236,7 +237,7 @@ let $FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!.git/**' --glob '!build
 
 au BufEnter * set fo-=c fo-=r fo-=o                     " stop annoying auto commenting on new lines
 au FileType help wincmd L                               " open help in vertical split
-au BufWritePre * :%s/\s\+$//e                           " remove trailing whitespaces before saving
+" au BufWritePre * :%s/\s\+$//e                           " remove trailing whitespaces before saving
 au CursorHold * silent call CocActionAsync('highlight') " highlight match on cursor hold
 
 " enable spell only if file type is normal text
@@ -478,7 +479,8 @@ nmap <space>0 <Plug>AirlineSelectTab0
 nmap <space>h <Plug>AirlineSelectPrevTab
 nmap <space>l <Plug>AirlineSelectNextTab
 lua require('leap').add_default_mappings()
-" Comment
+" lua require('leap').leap { target_windows = { vim.fn.win_getid() } }
+lua require('Comment').setup()
 nmap <space>/ gcc
 
 " let g:airline#extensions#tabline#show_buffers = 0
